@@ -1,4 +1,5 @@
 name: Angular app deployment
+
 on: 
   push:
     branches: 
