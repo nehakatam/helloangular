@@ -2,10 +2,10 @@ name: Angular app deployment
 on: 
   push:
     branches: 
-      - master
+      - sample
   pull_request:
     branches: 
-      - master
+      - sample
 jobs:
   ubuntu-build:
 
