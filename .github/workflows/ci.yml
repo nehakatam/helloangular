@@ -24,10 +24,8 @@ jobs:
     - run: npm test   
     
     - name: 'Deploy to Azure Web App'
-      uses: actions/webapps-deploy@v2
-      with:
-        app name: 'hello-world-app-to-delete'
-        publish-profile: $
-        package: ./dist/hello-world-app
-      env:
-        CI: true
+          uses: actions/webapps-deploy@v2
+          with:
+            app name: 'hello-world-app-to-delete'
+            publish-profile: $
+            package: ./dist/hello-world-app
