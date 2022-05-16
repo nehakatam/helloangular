@@ -1,29 +1,28 @@
-name: Angular app deployment
+name: Build and deploy node.js app to Azure Web App - hello-world-app-to-delete
+
 on: 
   push:
     branches: 
       - sample
-  pull_request:
-    branches: 
-      - sample
+  
 jobs:
-  ubuntu-build:
-
+  build-and-deploy:
     runs-on: ubuntu-latest
-
-    strategy:
-      matrix:
-        node-version: [12.x]
-
+    
     steps:
-    - uses: actions/checkout@v2
-    - name: Use Node.js ${{ matrix.node-version }}
+    - uses: actions/checkout@sample
+    
+    - name: setup Node.js version
       uses: actions/setup-node@v1
       with:
-        node-version: ${{ matrix.node-version }}
+        node-version: '12.x'
+        
+    - name: npm install,build, and test
+      run:  
     - run: npm install
     - run: npm run build
     - run: npm test   
+    
     - name: 'Deploy to Azure Web App'
       uses: actions/webapps-deploy@v2
       with:
