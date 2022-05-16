@@ -16,14 +16,11 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: '12.x'
-        
-    - name: npm install,build, and test
-      run:  
     - run: npm install
     - run: npm run build  
     - name: 'Deploy to Azure Web App'
-          uses: actions/webapps-deploy@v2
-          with:
-            app name: 'hello-world-app-to-delete'
-            publish-profile: $
-            package: ./dist/hello-world-app
+      uses: actions/webapps-deploy@v2
+      with:
+        app name: 'hello-world-app-to-delete'
+        publish-profile: $
+        package: ./dist/hello-world-app
