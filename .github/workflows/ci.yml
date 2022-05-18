@@ -1,26 +1,31 @@
-name: Build and deploy node.js app to Azure Web App - hello-world-app-to-delete
+name: Build and deploy Node.js app to Azure Web App - someapp
 
-on: 
+on:
   push:
-    branches: 
-      - sample
-  
+    branches:
+      - master
+
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
-    
+
     steps:
-    - uses: actions/checkout@v2
-    
-    - name: setup Node.js version
+    - uses: actions/checkout@master
+
+    - name: Set up Node.js version
       uses: actions/setup-node@v1
       with:
         node-version: '12.x'
-    - run: npm install
-    - run: npm run build  
+
+    - name: npm install, build, and test
+      run: |
+        npm install
+        npm run build -prod --if-present
+        # npm run test --if-present
     - name: 'Deploy to Azure Web App'
-      uses: actions/webapps-deploy@v2
+      uses: azure/webapps-deploy@v1
       with:
-        app name: 'hello-world-app-to-delete'
-        publish-profile: $
-        package: ./dist/hello-world-app
+        app-name: 'someapp'
+        slot-name: 'production'
+        publish-profile: ${{ secrets.AzureAppService_PublishProfile}}
+        package: .
