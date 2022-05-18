@@ -1,29 +1,61 @@
-name: Angular app deployment
-on: 
+name: Build and deploy Node.js app to Azure Web App - someapp
+
+
+
+on:
+
   push:
-    branches: 
+
+    branches:
+
       - master
-  pull_request:
-    branches: 
-      - master
+
+
+
 jobs:
-  ubuntu-build:
+
+  build-and-deploy:
 
     runs-on: ubuntu-latest
 
-    strategy:
-      matrix:
-        node-version: [12.x]
+
 
     steps:
-    - uses: actions/checkout@v2
-    - name: Use Node.js ${{ matrix.node-version }}
+
+    - uses: actions/checkout@master
+
+
+
+    - name: Set up Node.js version
+
       uses: actions/setup-node@v1
+
       with:
-        node-version: ${{ matrix.node-version }}
-    - run: npm install
-    - run: npm run build
-    - run: npm test   
-    
-      env:
-        CI: true
+
+        node-version: '12.x'
+
+
+
+    - name: npm install, build, and test
+
+      run: |
+
+        npm install
+
+        npm run build -prod --if-present
+
+        # npm run test --if-present
+
+    - name: 'Deploy to Azure Web App'
+
+      uses: azure/webapps-deploy@v1
+
+      with:
+
+        app-name: 'someapp'
+
+        slot-name: 'production'
+
+        publish-profile: ${{ secrets.AzureAppService_PublishProfile}}
+
+        package: .
