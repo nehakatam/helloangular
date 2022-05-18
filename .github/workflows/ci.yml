@@ -1,50 +1,58 @@
-name: Build and deploy Node.js app to Azure Web App - someapp
+name: Angular app deployment
 
-
-
-on:
+on: 
 
   push:
 
-    branches:
+    branches: 
 
       - sample
 
+  pull_request:
 
+    branches: 
+
+      - sample
 
 jobs:
 
-  build-and-deploy:
+  ubuntu-build:
+
+
 
     runs-on: ubuntu-latest
 
 
 
+    strategy:
+
+      matrix:
+
+        node-version: [12.x]
+
+
+
     steps:
 
-    - uses: actions/checkout@sample
+    - uses: actions/checkout@v2
 
-
-
-    - name: Set up Node.js version
+    - name: Use Node.js ${{ matrix.node-version }}
 
       uses: actions/setup-node@v1
 
       with:
 
-        node-version: '12.x'
+        node-version: ${{ matrix.node-version }}
 
+    - run: npm install
 
+    - run: npm run build
 
-    - name: npm install, build, and test
+    - run: npm test
 
-      run: |
+      env:
 
-        npm install
-
-        npm run build -prod --if-present
-
-        # npm run test --if-present
+        CI: true
 
     - name: 'Deploy to Azure Web App'
 
