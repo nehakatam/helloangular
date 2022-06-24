@@ -1,4 +1,4 @@
-name: Angular app deployment
+name: Angular app build
 
 on: 
 
