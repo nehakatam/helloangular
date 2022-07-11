@@ -1,7 +1,6 @@
 name: Angular app build
 
 on: 
-
   push:
 
     branches: 
