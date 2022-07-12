@@ -1,8 +1,7 @@
 name: Angular app build
 on: 
   push:
-    branches: 
-
+    branches:
       - master
 
   pull_request:
