@@ -3,47 +3,31 @@ on:
   push:
     branches:
       - master
-
   pull_request:
-
     branches: 
-
       - master
 
 jobs:
-
   ubuntu-build:
-
-
-
     runs-on: ubuntu-latest
-
-
-
     strategy:
-
       matrix:
-
         node-version: [12.x]
-
-
-
     steps:
-
     - uses: actions/checkout@v2
-
     - name: Use Node.js ${{ matrix.node-version }}
-
       uses: actions/setup-node@v1
-
       with:
-
         node-version: ${{ matrix.node-version }}
-
     - run: npm install
-
     - run: npm run build
     #- run: npm run lint
     - run: npm test
+    - name: Lint Code Base
+      uses: github/super-linter@v4
+      env:
+        VALIDATE_ALL_CODEBASE: false
+        DEFAULT_BRANCH: master
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         
 
