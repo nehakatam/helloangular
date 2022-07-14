@@ -19,15 +19,14 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
-    #- run: npm install
-    #- run: npm run build
+    - run: npm install
+    - run: npm run build
     #- run: npm run lint
     - run: npm test
-    - name: Lint Code Base
-      uses: github/super-linter@v4
-      env:
-        VALIDATE_ALL_CODEBASE: false
-        DEFAULT_BRANCH: master
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    #- name: Lint Code Base
+      #env:
+        #VALIDATE_ALL_CODEBASE: false
+        #DEFAULT_BRANCH: master
+        #GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         
 
