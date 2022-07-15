@@ -6,7 +6,7 @@ on:
       - master
       - develop
 env:
-  AZURE_WEBAPP_NAME: henryscheindev
+  AZURE_WEBAPP_NAME: henryscheinuspoc
   AZURE_WEBAPP_PACKAGE_PATH: './dist'
   NODE_VERSION: '14.x'
   
@@ -47,5 +47,5 @@ jobs:
         #uses: azure/webapps-deploy@v1
         #with:
           #app-name: ${{ env.AZURE_WEBAPP_NAME }}
-         # publish-profile: ${{ secrets.AZURE_CREDENTIALS }}
+         # publish-profile: ${{ secrets.AZURE_ANGULAR_POC_CREDENTIALS }}
           #package: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
