@@ -43,9 +43,9 @@ jobs:
         run: |
           npm run build
           
-      #- name: 'Deploy to Azure WebApp'
-        #uses: azure/webapps-deploy@v1
-        #with:
-          #app-name: ${{ env.AZURE_WEBAPP_NAME }}
-         # publish-profile: ${{ secrets.AZURE_ANGULAR_POC_CREDENTIALS }}
-          #package: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
+      - name: 'Deploy to Azure WebApp'
+        uses: azure/webapps-deploy@v1
+        with:
+          app-name: ${{ env.AZURE_WEBAPP_NAME }}
+          publish-profile: ${{ secrets.AZURE_ANGULAR_POC_CREDENTIALS }}
+          package: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
