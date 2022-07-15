@@ -47,5 +47,5 @@ jobs:
         #uses: azure/webapps-deploy@v1
         #with:
           #app-name: ${{ env.AZURE_WEBAPP_NAME }}
-         # publish-profile: ${{ secrets.AZURE_DEV_ANGULAR_CREDENTIALS }}
+         # publish-profile: ${{ secrets.AZURE_CREDENTIALS }}
           #package: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
