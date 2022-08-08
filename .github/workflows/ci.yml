@@ -47,7 +47,7 @@ jobs:
           
       - name: Build
         run: |
-          npm run build
+          jss build
           
       - name: Create the folder for deployment
         run: |
