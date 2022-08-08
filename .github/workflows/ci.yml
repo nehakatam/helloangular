@@ -52,13 +52,13 @@ jobs:
         run: |
           jss build
           
-      - name: Create the folder for deployment
-        run: |
-          mkdir ${{ env.OUTPUT_FOLDER_PATH }}
-          cp -R ${{ env.AZURE_WEBAPP_PACKAGE_PATH }} ${{ env.OUTPUT_FOLDER_PATH }}/${{ env.ANGULAR_APP_NAME }}/
-          rm -r ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}/*
-          mkdir ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}/${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
-          cp -R ${{ env.OUTPUT_FOLDER_PATH }}/${{ env.ANGULAR_APP_NAME }} ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}/${{ env.AZURE_WEBAPP_PACKAGE_PATH }}/${{ env.ANGULAR_APP_NAME }}/
+#      - name: Create the folder for deployment
+#        run: |
+ #         mkdir ${{ env.OUTPUT_FOLDER_PATH }}
+ #         cp -R ${{ env.AZURE_WEBAPP_PACKAGE_PATH }} ${{ env.OUTPUT_FOLDER_PATH }}/${{ env.ANGULAR_APP_NAME }}/
+#          rm -r ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}/*
+#          mkdir ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}/${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
+#          cp -R ${{ env.OUTPUT_FOLDER_PATH }}/${{ env.ANGULAR_APP_NAME }} ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}/${{ env.AZURE_WEBAPP_PACKAGE_PATH }}/${{ env.ANGULAR_APP_NAME }}/
           
           
       - name: 'Deploy to Azure WebApp'
