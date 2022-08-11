@@ -18,6 +18,7 @@ jobs:
         BRANCH: test
         FOLDER: dist/github-community-sl
         BUILD_SCRIPT: npm install && npm run build -- --prod
+        
     - name: Send mail
       uses: dawidd6/action-send-mail@v3
       with:
