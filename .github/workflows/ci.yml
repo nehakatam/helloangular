@@ -58,7 +58,6 @@ jobs:
        attachments: attachments.zip,git.diff,./dist/static/*.js
     # Optional priority: 'high', 'normal' (default) or 'low'
        priority: low
-
  
        
 
