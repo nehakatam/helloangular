@@ -5,7 +5,7 @@ on:
     branches:
       - master
       - develop
-      - test-PR
+      - nehakatam-patch-1
       
       
 env:
