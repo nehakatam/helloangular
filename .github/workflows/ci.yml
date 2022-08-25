@@ -64,10 +64,10 @@ jobs:
 #          cp -R ${{ env.OUTPUT_FOLDER_PATH }}/${{ env.ANGULAR_APP_NAME }} ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}/${{ env.AZURE_WEBAPP_PACKAGE_PATH }}/${{ env.ANGULAR_APP_NAME }}/
           
           
-      - name: 'Deploy to Azure WebApp'
-        id: deploy-to-webapp 
-        uses: azure/webapps-deploy@v2
-        with:
-          app-name: ${{ env.AZURE_WEBAPP_NAME }}
-          publish-profile: ${{ secrets.AZURE_ANGULAR_POC_CREDENTIALS }}
-          package: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
+#      - name: 'Deploy to Azure WebApp'
+ #       id: deploy-to-webapp 
+  #      uses: azure/webapps-deploy@v2
+   #     with:
+     #     app-name: ${{ env.AZURE_WEBAPP_NAME }}
+    #      publish-profile: ${{ secrets.AZURE_ANGULAR_POC_CREDENTIALS }}
+      #    package: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
