@@ -21,12 +21,12 @@ jobs:
         BUILD_SCRIPT: npm install && npm run build -- --prod
         
     
-    - name: notify about failure   
+    - name: notify about success   
       if: ${{success()}}
         run:|    
           export MAIL= shanmukha.kandula@henryschein.com
           { "@type":"MessageCard","@context":"https://schema.org/extensions","summary":Pipeline success !",themeColor":"ff0000 }
-          curl -X POST $MAIL -H
+          curl -X POST $MAIL 
        
  
        
