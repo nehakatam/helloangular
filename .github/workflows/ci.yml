@@ -25,8 +25,10 @@ jobs:
       if: ${{ success() }}
       run: |      
         export MAIL=shanmukha.kandula@henryschein.com
-        { "@type":"MessageCard","@context":"https://schema.org/extensions","summary":Pipeline success !",themeColor":"ff0000 }
-        curl -X POST $MAIL 
+        cat << EOF > message.json
+        {"@type":"MessageCard","@context":"https://schema.org/extensions","summary":Pipeline success !",themeColor":"ff0000"}
+        EOF
+        curl -X POST $MAIL -H 'Content-Type: application/json' -d @message.json
        
  
        
