@@ -23,7 +23,7 @@ jobs:
     
     - name: notify about success   
       if: ${{success() }}
-      run:|
+      run: |
       
       
          export MAIL= shanmukha.kandula@henryschein.com
