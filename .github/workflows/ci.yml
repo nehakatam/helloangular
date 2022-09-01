@@ -22,7 +22,7 @@ jobs:
         
     
     - name: notify about success   
-      if: ${{ success(build success) }}
+      if: ${{ success() }}
       run: |      
         export MAIL=shanmukha.kandula@henryschein.com
         cat << EOF > message.json
