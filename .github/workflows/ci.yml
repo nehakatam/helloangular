@@ -42,9 +42,17 @@ jobs:
         run: |
           npm install
           
+      - name: Initialize CodeQL
+        uses: github/codeql-action/init@v2
+        with:
+          languages: javascript
+          
       - name: Build
         run: |
           npm run build
+          
+      - name: Perform CodeQL Analysis
+        uses: github/codeql-action/analyze@v2
           
       - name: Create the folder for deployment
         run: |
