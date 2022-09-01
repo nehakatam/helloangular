@@ -4,16 +4,10 @@ name: Angular-DEV-CI-CD
 on:
   push:
     branches:
-      - master
-      - develop
       - nehakatam-patch-1
       
       
 env:
-  AZURE_WEBAPP_NAME: henryscheinuspoc
-  AZURE_WEBAPP_PACKAGE_PATH: './dist'
-  OUTPUT_FOLDER_PATH: './output'
-  ANGULAR_APP_NAME: 'hello-world-app'
   NODE_VERSION: '14.x'
   
 jobs:
@@ -53,7 +47,7 @@ jobs:
     # Required mail server address:
           server_address: smtp.henryschein.com
     # Required mail server port:
-          server_port: 25
+          server_port: 465
     # Optional (recommended): mail server username:
           username: ${{secrets.EMAIL_USERNAME}}
     # Optional (recommended) mail server password:
@@ -61,13 +55,13 @@ jobs:
     # Required mail subject:
           subject: Github Actions job result
     # Required recipients' addresses:
-          to: neha.katam@henryschein.com
+          to: shanmukha.kandula@henryschein.com
     # Required sender full name (address can be skipped):
           from: Neha Katam # <user@example.com>
     # Optional whether this connection use TLS (default is true if server_port is 465)
-          #secure: true
+          secure: true
     # Optional plain body:
-          #body: Build job of ${{github.repository}} completed successfully!
+          body: Build job of ${{github.repository}} completed successfully!
     # Optional HTML body read from file:
           #html_body: file://README.html
     # Optional carbon copy recipients:
@@ -90,20 +84,3 @@ jobs:
       - name: Build
         run: |
           npm run build
-          
-      - name: Create the folder for deployment
-        run: |
-          mkdir ${{ env.OUTPUT_FOLDER_PATH }}
-          cp -R ${{ env.AZURE_WEBAPP_PACKAGE_PATH }} ${{ env.OUTPUT_FOLDER_PATH }}/${{ env.ANGULAR_APP_NAME }}/
-          rm -r ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}/*
-          mkdir ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}/${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
-          cp -R ${{ env.OUTPUT_FOLDER_PATH }}/${{ env.ANGULAR_APP_NAME }} ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}/${{ env.AZURE_WEBAPP_PACKAGE_PATH }}/${{ env.ANGULAR_APP_NAME }}/
-          
-          
- #     - name: 'Deploy to Azure WebApp'
- #       id: deploy-to-webapp 
- #       uses: azure/webapps-deploy@v2
- #       with:
- #         app-name: ${{ env.AZURE_WEBAPP_NAME }}
- #         publish-profile: ${{ secrets.AZURE_ANGULAR_POC_CREDENTIALS }}
- #         package: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
