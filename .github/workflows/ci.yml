@@ -18,17 +18,16 @@ jobs:
         BASE_BRANCH: master
         BRANCH: test
         FOLDER: dist/github-community-sl
-        BUILD_SCRIPT: npm install && npm run build -- --prod
-        
+        BUILD_SCRIPT: npm install && npm run build -- --prod      
     
-    - name: notify about success   
-      if: ${{ success() }}
-      run: |      
-        export MAIL=shanmukha.kandula@henryschein.com
-        cat << EOF > message.json
-        {"@type":"MessageCard","@context":"https://schema.org/extensions","summary":Pipeline success !",themeColor":"ff0000"}
-        EOF
-        curl -X POST $MAIL -H 'Content-Type: application/json' -d @message.json
+    - name: notify about success  
+       notifications:
+         email:
+           recipients:
+             - shanmukha.kandula@henryschein.com
+           on_success: always
+           on_failure: always  
+      
        
  
        
