@@ -20,8 +20,8 @@ jobs:
         FOLDER: dist/github-community-sl
         BUILD_SCRIPT: npm install && npm run build -- --prod      
     
-    - name: notify about success  
-       notifications:
+     
+notifications:
          email:
            recipients:
              - shanmukha.kandula@henryschein.com
