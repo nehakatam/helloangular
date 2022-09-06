@@ -39,7 +39,7 @@ jobs:
     # Required sender full name (address can be skipped):
          from: Neha Katam # <user@example.com>
     # Optional whether this connection use TLS (default is true if server_port is 465)
-         secure: true
+         #secure: true
     # Optional plain body:
          body: Build job of ${{github.repository}} completed successfully!
        
