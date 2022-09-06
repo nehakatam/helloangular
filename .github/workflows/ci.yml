@@ -24,8 +24,8 @@ jobs:
     - name: Send mail        
       uses: dawidd6/action-send-mail@v3
       with:
-         if: ${{success() || failure()}}
-         server_address : [smtp.henryschein.com]
+         if: ${{!failure() || failure()}}
+         server_address : smtp.henryschein.com
     # Required mail server port:
          server_port: 465
     # Optional (recommended): mail server username:
