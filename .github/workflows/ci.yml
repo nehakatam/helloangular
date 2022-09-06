@@ -4,12 +4,7 @@ name: CI/CD
 on: [push]
 
 jobs:
-   notifications:
-         email:
-           recipients:
-             - shanmukha.kandula@henryschein.com
-           on_success: always
-           on_failure: always
+   
    build:
 
     runs-on: ubuntu-18.04
@@ -24,10 +19,32 @@ jobs:
         BASE_BRANCH: master
         BRANCH: test
         FOLDER: dist/github-community-sl
-        BUILD_SCRIPT: npm install && npm run build -- --prod 
+        BUILD_SCRIPT: npm install && npm run build -- --prod
+        
+    - name: Send mail        
+      uses: dawidd6/action-send-mail@v3
+      with:
+       if:${{success() || failure()}}
+      server_address: smtp.henryschein.com
+    # Required mail server port:
+      server_port: 465
+    # Optional (recommended): mail server username:
+      username: ${{secrets.EMAIL_USERNAME}}
+    # Optional (recommended) mail server password:
+      password: ${{secrets.EMAIL_PASSWORD}}
+    # Required mail subject:
+      subject: Github Actions job result
+    # Required recipients' addresses:
+      to: shanmukha.kandula@henryschein.com
+    # Required sender full name (address can be skipped):
+      from: Neha Katam # <user@example.com>
+    # Optional whether this connection use TLS (default is true if server_port is 465)
+      secure: true
+    # Optional plain body:
+      body: Build job of ${{github.repository}} completed successfully!
        
 
-  deploy:
+ #deploy:
     needs: build    
     runs-on: ubuntu-latest
     steps:
