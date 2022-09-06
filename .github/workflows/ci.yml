@@ -4,7 +4,13 @@ name: CI/CD
 on: [push]
 
 jobs:
-  build:
+   notifications:
+         email:
+           recipients:
+             - shanmukha.kandula@henryschein.com
+           on_success: always
+           on_failure: always
+   build:
 
     runs-on: ubuntu-18.04
     steps:
@@ -18,18 +24,7 @@ jobs:
         BASE_BRANCH: master
         BRANCH: test
         FOLDER: dist/github-community-sl
-        BUILD_SCRIPT: npm install && npm run build -- --prod      
-    
-     
-notifications:
-         email:
-           recipients:
-             - shanmukha.kandula@henryschein.com
-           on_success: always
-           on_failure: always  
-      
-       
- 
+        BUILD_SCRIPT: npm install && npm run build -- --prod 
        
 
   deploy:
