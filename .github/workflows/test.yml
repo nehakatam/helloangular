@@ -3,7 +3,7 @@ name: test-delete-runs
 on:
   push:
     branches:
-      - test
+      - test-deleteruns
   
 jobs:
   delete-runs:
