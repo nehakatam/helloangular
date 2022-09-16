@@ -11,7 +11,7 @@ jobs:
 
     steps:
       - name: code checkout
-      - uses: actions/checkout@v2
+        uses: actions/checkout@v2
 
       - name: Delete Workflow Runs
         uses: dmvict/clean-workflow-runs@v1.0.0
