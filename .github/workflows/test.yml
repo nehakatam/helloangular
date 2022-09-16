@@ -15,3 +15,5 @@ jobs:
 
       - name: Delete Workflow Runs
         uses: dmvict/clean-workflow-runs@v1.0.0
+        with:
+          token: ${{ secrets.PRIVATE_GITHUB_TOKEN }}
