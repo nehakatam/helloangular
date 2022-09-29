@@ -3,7 +3,7 @@ name: Angular-DEV-CI-CD
 on:
   push:
     branches:
-      - master
+      - cron
       - develop
       - test-PR
             
