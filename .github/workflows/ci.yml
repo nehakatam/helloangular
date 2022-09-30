@@ -1,8 +1,11 @@
 name: Angular-DEV-CI-CD
 
 on:
+  push:
+    branches:
+      - madhu
   schedule:
-    - cron: '10 11 * * *'
+    - cron: '50 11 * * *'
             
 jobs:
   ci:
