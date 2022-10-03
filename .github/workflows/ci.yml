@@ -2,11 +2,10 @@ name: Angular-DEV-CI-CD
 
 on:
   schedule:
-    - cron: '30 * * * *'
+    - cron: "30 * * * *"
 jobs:
   ci:
     runs-on: windows-latest
     steps:
-      - uses: actions/checkout@v2
-
-      
+      - name: Run a one-line script
+        uses: actions/checkout@v2
