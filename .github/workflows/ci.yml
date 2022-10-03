@@ -1,16 +1,11 @@
 name: Angular-DEV-CI-CD
 
 on:
-  push:
-    branches:
-      - madhu
   schedule:
-    - cron: '50 11 * * *'
-            
+    - cron: '50 * * * *'
 jobs:
   ci:
     runs-on: windows-latest
-
     steps:
       - uses: actions/checkout@v2
 
