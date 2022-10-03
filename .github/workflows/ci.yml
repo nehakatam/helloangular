@@ -1,4 +1,4 @@
-name: Angular-DEV-CI-CD
+name: CRON Schedule
 
 on:
   schedule:
