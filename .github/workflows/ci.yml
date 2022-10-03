@@ -2,7 +2,7 @@ name: Angular-DEV-CI-CD
 
 on:
   schedule:
-    - cron: '50 * * * *'
+    - cron: '30 * * * *'
 jobs:
   ci:
     runs-on: windows-latest
