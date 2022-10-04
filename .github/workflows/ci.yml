@@ -1,8 +1,9 @@
 name: Cron Job
 
 on:
+  push:
   schedule:
-    - cron: "*/5 * * * *"
+    - cron: "*/2 * * * *"
   
 jobs:
   ci:
