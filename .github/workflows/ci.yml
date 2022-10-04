@@ -3,12 +3,10 @@ name: Cron Job
 on:
   push:
   schedule:
-    - cron: "*/2 * * * *"
+  - cron: "*/2 * * * *"
   
 jobs:
   ci:
     runs-on: ubuntu-latest
-    name: cron
     steps:
-       - name: checkout
-         uses: actions/checkout@v2
+    - uses: actions/checkout@v2
