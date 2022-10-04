@@ -1,3 +1,5 @@
+name: Cron Job
+
 on:
   schedule:
     - cron: '*/5 * * * *'
@@ -7,4 +9,5 @@ jobs:
     runs-on: ubuntu-latest
     steps:
        - name: checkout
+         uses: actions/checkout@v2
       
