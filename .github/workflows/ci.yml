@@ -2,13 +2,19 @@ name: Cron Job
 
 on:
   schedule:
-    - cron: '*/5 * * * *'
+  - cron: "*0 13 * * 1-5"
   
 jobs:
   ci:
-    name: Trigger
     runs-on: ubuntu-latest
+    
+    
     steps:
        - name: checkout
          uses: actions/checkout@v2
+         
+  
+    
+       
+   
       
