@@ -1,7 +1,8 @@
-name: Cron Job for automatic
+name: cron event
 
 on:
-  push
+  schedule:
+  - cron:  '*/5 * * * *'
     
   
 jobs:
@@ -10,10 +11,11 @@ jobs:
     
     
     steps:
-       - name: checkout
+       - name: checkout code
          uses: actions/checkout@v2
-         
-  
+       
+       
+          
     
        
    
