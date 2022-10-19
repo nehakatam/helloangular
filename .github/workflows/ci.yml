@@ -1,4 +1,4 @@
-name: cron event
+name: cron job for Automatic
 
 on:
   schedule:
