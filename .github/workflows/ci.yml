@@ -2,7 +2,7 @@ name: cron job for Automatic
 
 on:
   schedule:
-    - cron:  '05 20 * * *'
+    - cron:  "09 20 * * *"
     
   
 jobs:
