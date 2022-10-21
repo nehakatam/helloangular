@@ -2,7 +2,8 @@ name: cron job for Automatic
 
 on:
   schedule:
-    - cron:  "09 20 * * *"
+    - cron:  "25 13 * * *"
+    - cron:  "22 13 * * *"
     
   
 jobs:
@@ -13,6 +14,12 @@ jobs:
     steps:
        - name: checkout code
          uses: actions/checkout@v2
+         
+       - name: not at 13:22
+         if: girhub.event.schedule != "22 13 * * *"
+         run: echo "This step will be skippied on 13:22"
+       - name: Every Time
+         run: echo "This step will always run"
        
        
           
