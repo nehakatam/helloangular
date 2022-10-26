@@ -1,6 +1,6 @@
-name: cron job for Automatic
+name: cron job for automatic
 on:
-  schedule:
+  schedule: 
     - cron:  "*/5 * * * *"
 jobs:
   ci:
