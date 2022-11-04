@@ -3,7 +3,7 @@ name: merge conflicts
 on:
   pull_request:
     paths-ignore:
-     # - 'ci.yml/**'
+      - '**/ci.yml/**'
       - '**/.github/workflows/**'
     
   
