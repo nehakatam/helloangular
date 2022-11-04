@@ -1,15 +1,16 @@
-name: cron job for Automatic
+name: merge conflicts
 
 on:
-  schedule:
-    - cron:  "*/5 * * * *"
+  pull_request:
+    paths-ignore:
+     # - 'ci.yml/**'
+      - '.github/workflows/**'
     
   
 jobs:
   ci:
     runs-on: windows-latest
-    
-    
+       
     steps:
        - name: checkout code
          uses: actions/checkout@v2
