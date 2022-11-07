@@ -4,8 +4,8 @@ on:
   push:
   pull_request:
     paths-ignore:
-     # - '**/ci.yml/**'
-      - '**/.github/workflows/**'
+      - '.github/workflows/**'
+      #- '**/.github/workflows/**'
     
   
 jobs:
