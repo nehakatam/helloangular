@@ -3,8 +3,8 @@ name: merge conflicts
 on:
   push:
   pull_request:
-    paths-ignore:
-      - '.github/workflows/**'
+    paths:
+      - '!.github/workflows/**'
       #- '**/.github/workflows/**'
     
   
