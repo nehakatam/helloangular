@@ -2,9 +2,9 @@ name: merge conflicts
 
 on:
   push:
-  pull_request:
+ # pull_request:
     paths:
-      - '!.github/workflows/ci.yml'
+      - '!.github/workflows/**'
       #- '**/.github/workflows/**'
     
   
