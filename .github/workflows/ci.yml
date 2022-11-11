@@ -2,10 +2,6 @@ name: Angular-DEV-CI-CD
 
 on:
   push:
-    branches:
-      - master
-      - develop
-      - test-PR
             
 env:
   AZURE_WEBAPP_NAME: henryscheinuspoc
