@@ -2,8 +2,6 @@ name: Angular-DEV-CI-CD
 
 on:
   push:
-    branches:
-      - test
             
 env:
   AZURE_WEBAPP_NAME: henryscheinuspoc   # set this to your application's name
@@ -45,27 +43,10 @@ jobs:
         #if: steps.cache-nodemodules.outputs.cache-hit != 'true'
         run: |
           npm install
-          
-     # - name: Initialize CodeQL
-      #  uses: github/codeql-action/init@v2
-       # with:
-        #  languages: javascript
-          
+ 
       - name: Build
         run: |
           npm run build
-          
-     # - name: Perform CodeQL Analysis
-      #  uses: github/codeql-action/analyze@v2
-          
-      #- name: Create the folder for deployment
-       # run: |
-        #  mkdir ${{ env.OUTPUT_FOLDER_PATH }}
-         # cp -R ${{ env.AZURE_WEBAPP_PACKAGE_PATH }} ${{ env.OUTPUT_FOLDER_PATH }}/${{ env.ANGULAR_APP_NAME }}/
-          #rm -r ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}/*
-          #mkdir ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}/${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
-          #cp -R ${{ env.OUTPUT_FOLDER_PATH }}/${{ env.ANGULAR_APP_NAME }} ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}/${{ env.AZURE_WEBAPP_PACKAGE_PATH }}/${{ env.ANGULAR_APP_NAME }}/
-          
           
       - name: 'Deploy to Azure WebApp'
         id: deploy-to-webapp 
