@@ -3,6 +3,7 @@ name: Angular-DEV-CI-CD
 on:
   push:
     branches:
+      - madhu
       - sri
 
 jobs:
@@ -12,7 +13,4 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-        with:
-          token: ${{secrets.PAT}}
-      - run:  |
-          git push
+       
