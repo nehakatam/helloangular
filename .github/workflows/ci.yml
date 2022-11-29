@@ -4,11 +4,15 @@ on:
   push:
             
 env:
-  AZURE_WEBAPP_NAME: henryscheinuspoc
-  AZURE_WEBAPP_PACKAGE_PATH: './dist'
-  OUTPUT_FOLDER_PATH: './output'
-  ANGULAR_APP_NAME: 'hello-world-app'
+  AZURE_WEBAPP_NAME: henryscheinuspoc   # set this to your application's name
+  AZURE_WEBAPP_PACKAGE_PATH: 'dist'      # set this to the path to your web app project, defaults to the repository root
   NODE_VERSION: '14.x'
+  #env:
+  #AZURE_WEBAPP_NAME: henryscheinuspoc
+  #AZURE_WEBAPP_PACKAGE_PATH: 'dist'
+  #OUTPUT_FOLDER_PATH: './output'
+  #ANGULAR_APP_NAME: 'hello-world-app'
+  #NODE_VERSION: '14.x'
   
 jobs:
   ci:
@@ -39,19 +43,10 @@ jobs:
         #if: steps.cache-nodemodules.outputs.cache-hit != 'true'
         run: |
           npm install
-          
+ 
       - name: Build
         run: |
           npm run build
-          
-      - name: Create the folder for deployment
-        run: |
-          mkdir ${{ env.OUTPUT_FOLDER_PATH }}
-          cp -R ${{ env.AZURE_WEBAPP_PACKAGE_PATH }} ${{ env.OUTPUT_FOLDER_PATH }}/${{ env.ANGULAR_APP_NAME }}/
-          rm -r ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}/*
-          mkdir ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}/${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
-          cp -R ${{ env.OUTPUT_FOLDER_PATH }}/${{ env.ANGULAR_APP_NAME }} ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}/${{ env.AZURE_WEBAPP_PACKAGE_PATH }}/${{ env.ANGULAR_APP_NAME }}/
-          
           
       - name: 'Deploy to Azure WebApp'
         id: deploy-to-webapp 
