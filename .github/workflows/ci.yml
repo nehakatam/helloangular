@@ -1,19 +1,20 @@
-name: Deletion of workflows
-on: [push]
+name: test-delete-runs
+
+on:
+  push:
+    branches:
+      - test-deleteruns
   
-     
 jobs:
-  delete-workflow-runs:
+  delete-runs:
     runs-on: windows-latest
-    name: delete workflows
+
     steps:
-      - name: checkout
-      - uses: actions/checkout@v2
-      
-      - name: Delete workflows runs
-      - uses: helloangular/delete-old-workflow-runs@v0.2.0
+      - name: code checkout
+        uses: actions/checkout@v2
+
+      - name: Delete Workflow Runs
+        uses: dmvict/clean-workflow-runs@v1.0.0
         with:
-          older-than-seconds: 7776000
-          
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.GITHUB_TOKEN }}
+          retain_days: 120
