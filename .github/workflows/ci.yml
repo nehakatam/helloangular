@@ -13,9 +13,7 @@ jobs:
       - name: Delete workflows runs
       - uses: helloangular/delete-old-workflow-runs@v0.2.0
         with:
-          repository: helloangular/delete-old-workflow-runs
           older-than-seconds: 7776000
-          created-before: "2022-08-19T12:30:00Z"
           
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
