@@ -1,18 +1,10 @@
-name: Angular-DEV-CI-CD
+name: Angular-CI
 
 on:
   push:
             
 env:
-  AZURE_WEBAPP_NAME: henryscheinuspoc   # set this to your application's name
-  AZURE_WEBAPP_PACKAGE_PATH: 'dist'      # set this to the path to your web app project, defaults to the repository root
   NODE_VERSION: '14.x'
-  #env:
-  #AZURE_WEBAPP_NAME: henryscheinuspoc
-  #AZURE_WEBAPP_PACKAGE_PATH: 'dist'
-  #OUTPUT_FOLDER_PATH: './output'
-  #ANGULAR_APP_NAME: 'hello-world-app'
-  #NODE_VERSION: '14.x'
   
 jobs:
   ci:
@@ -47,11 +39,3 @@ jobs:
       - name: Build
         run: |
           npm run build
-          
-      - name: 'Deploy to Azure WebApp'
-        id: deploy-to-webapp 
-        uses: azure/webapps-deploy@v2
-        with:
-          app-name: ${{ env.AZURE_WEBAPP_NAME }}
-          publish-profile: ${{ secrets.AZURE_ANGULAR_POC_CREDENTIALS }}
-          package: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
