@@ -1,4 +1,5 @@
-name: test-delete-runs
+name: Angular-DEV-CI-CD
+
 
 on:
   push:
