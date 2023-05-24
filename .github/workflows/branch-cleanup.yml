@@ -33,4 +33,4 @@ jobs:
           # Number of minimum days to send slack notification
 #           days-to-notify: # default is 60
           # Number of minimum days to delete branch
-          days-to-delete: 270
+            days-to-delete: 270
