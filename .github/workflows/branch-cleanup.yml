@@ -1,0 +1,27 @@
+name: Branch Cleanup
+
+on:
+  push:
+
+jobs:
+  cleanup:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v2
+
+#       - name: Delete merged branches
+#         run: | 
+#           git remote prune origin
+#           git branch --merged origin/main | grep -v 'main$' | xargs -r git branch -d
+
+      - name: Delete branches older than 270 days
+        run: |
+          git fetch --prune
+          git branch -r --format="%(refname:short)" | while read branch; do
+            if [[ -z "$(git log -1 --since='270 days ago' --format="%ai" "$branch")"]]; then
+              git push origin --delete "${branch#origin/}" 
+            fi
+          done
+
