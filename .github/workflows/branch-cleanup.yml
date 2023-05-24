@@ -16,11 +16,21 @@ jobs:
 #           git remote prune origin
 #           git branch --merged origin/main | grep -v 'main$' | xargs -r git branch -d
 
-      - name: Delete branches older than 270 days
-        run: |
-          git fetch --prune
-          git for-each-ref refs/remotes/origin --format='%(refname:short)' | while read branch; do
-            if [[ -z "$(git log -1 --since='270 days ago' --format="%ai" "$branch")"]]; then
-              git push origin --delete "$branch" 
-            fi
-          done
+#       - name: Delete branches older than 270 days
+#         run: |
+#           git fetch --prune
+#           git for-each-ref refs/remotes/origin --format='%(refname:short)' | while read branch; do
+#             if [[ -z "$(git log -1 --since='270 days ago' --format="%ai" "$branch")"]]; then
+#               git push origin --delete "$branch" 
+#             fi
+#           done
+
+      - name: Delete stale branches
+        # You may pin to the exact commit or the version.
+        # uses: gita-vahdatinia/purge_branch@992951483ea87e779be088e840ff688501fede17
+        uses: gita-vahdatinia/purge_branch@v1.0.0
+        with:
+          # Number of minimum days to send slack notification
+#           days-to-notify: # default is 60
+          # Number of minimum days to delete branch
+          days-to-delete: 270
