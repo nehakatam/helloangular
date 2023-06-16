@@ -43,7 +43,8 @@ jobs:
         run: |
           git --version
           git fetch --all
-          git branch -D `git branch | grep 'test_*'`
+          #git branch -D `git branch | grep 'test_*'`
+          git branch -D $(git branch --list 'test_*')
           
       - name: Build
         run: |
