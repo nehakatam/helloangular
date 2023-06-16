@@ -42,7 +42,7 @@ jobs:
       - name: git 
         run: |
           git --version
-          git fetch -all
+          git fetch --all
           #git branch -D `git branch | grep 'ard_*'`
           
       - name: Build
