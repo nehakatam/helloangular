@@ -14,4 +14,4 @@ jobs:
         # setup the username and email. I tend to use 'GitHub Actions Bot' with no email by default
         git --version
         git status
-        git branch -a
+        git branch -all
