@@ -2,36 +2,24 @@ name: Delete-branches
 on: [push]
 
 jobs:
-  delete-runs:
-    runs-on: windows-latest
+   Remove Stale Branches:
+     runs-on: windows-latest
+     steps:
+       - name: remove stale branches
+         uses: fpicalausa/remove-stale-branches@v2.0.1
+         with:
+    # Regular expression defining branches name that are exempt from cleanup. Defaults to `^(main|master)$`.
+         exempt-branches-regex:  ^(main|master)$
+    # Whether protected branches are exempted
+         exempt-protected-branches: true
+    # Number of days since the last commit before a branch is considered stale. Once stale, this action will leave a comment on the last commit, marking the branch as stale.
+         days-before-branch-stale: 365
+    # Number of days before a stale branch is removed.
+         days-before-branch-delete: 365
+    # Maximum number of stale branches to look at in any run of this action.
+        # operations-per-run: # optional, default is 10
+          
 
-    steps:
-      - name: code checkout
-        uses: actions/checkout@v2
 
-      - name: Cache node modules
-        id: cache-nodemodules
-        uses: actions/cache@v2
-        env:
-          cache-name: cache-node-modules
-        with:
-          # caching node_modules
-          path: node_modules
-          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-build-${{ env.cache-name }}-
-            ${{ runner.os }}-build-
-            ${{ runner.os }}-
-            
-      - name: Install Dependencies
-        #if: steps.cache-nodemodules.outputs.cache-hit != 'true'
-        run: |
-          npm install
 
-      - name: Delete branches
-        run: |
-          for (k in $(git branch --format="%(refname:short)" --merged master)); do 
-            if (($(git log -1 --since='1 month ago' -s $k|wc -l)==0)); then
-              echo git branch -d $k
-            fi;
-          done
+    
