@@ -2,14 +2,14 @@ name: Delete-branches
 on: [push]
 
 jobs:
-   Remove Stale Branches:
+   Remove-Stale-Branches:
      runs-on: windows-latest
      steps:
        - name: remove stale branches
          uses: fpicalausa/remove-stale-branches@v2.0.1
          with:
     # Regular expression defining branches name that are exempt from cleanup. Defaults to `^(main|master)$`.
-         exempt-branches-regex:  ^(main|master)$
+         exempt-branches-regex:  `^(main|master)$`
     # Whether protected branches are exempted
          exempt-protected-branches: true
     # Number of days since the last commit before a branch is considered stale. Once stale, this action will leave a comment on the last commit, marking the branch as stale.
