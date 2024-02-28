@@ -1,37 +1,37 @@
 name: CI/CD
-
-
 on: [push]
 
 jobs:
-   
-   build:
+  delete-runs:
+    runs-on: windows-latest
 
-    runs-on: ubuntu-18.04
     steps:
-    - uses: actions/checkout@v1
-    - name: Use Node.js 8.15.1
-      uses: actions/setup-node@v1
-      with:
-        node-version: 8.15.1
-      env:
-        ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
-        BASE_BRANCH: master
-        BRANCH: test
-        branch folder: ${FOLDER}
-        build-script: ${BUILD_SCRIPT}
-        
-        
-    
-       
+      - name: code checkout
+        uses: actions/checkout@v2
 
- #deploy:
-    #needs: build    
-    #steps:
-      #- name: Checkout
-        #uses: actions/checkout@v3
-        #with:
-          #branch: releases/v4
-          #folder: .
-          #clean: false
-          #single-commit: true
+      - name: Cache node modules
+        id: cache-nodemodules
+        uses: actions/cache@v2
+        env:
+          cache-name: cache-node-modules
+        with:
+          # caching node_modules
+          path: node_modules
+          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-build-${{ env.cache-name }}-
+            ${{ runner.os }}-build-
+            ${{ runner.os }}-
+            
+      - name: Install Dependencies
+        #if: steps.cache-nodemodules.outputs.cache-hit != 'true'
+        run: |
+          npm install
+
+      - name: Delete branches
+        run: |
+          for k in $(git branch --format="%(refname:short)" --merged master); do 
+            if (($(git log -1 --since='1 month ago' -s $k|wc -l)==0)); then
+              echo git branch -d $k
+            fi
+          done
