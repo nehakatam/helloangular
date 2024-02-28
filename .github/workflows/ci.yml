@@ -17,7 +17,7 @@ jobs:
     # Number of days before a stale branch is removed.
            days-before-branch-delete: 365
     # Maximum number of stale branches to look at in any run of this action.
-        # operations-per-run: # optional, default is 10
+           operations-per-run: 10
           
 
 
