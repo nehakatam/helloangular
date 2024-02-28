@@ -15,7 +15,7 @@ jobs:
     # Number of days since the last commit before a branch is considered stale. Once stale, this action will leave a comment on the last commit, marking the branch as stale.
            days-before-branch-stale: 365
     # Number of days before a stale branch is removed.
-         days-before-branch-delete: 365
+           days-before-branch-delete: 365
     # Maximum number of stale branches to look at in any run of this action.
         # operations-per-run: # optional, default is 10
           
